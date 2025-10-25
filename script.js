@@ -26,7 +26,15 @@
     return `rgb(${r},${g},${b})`;
   }
   function createConfetti(init=true){
-    return { x: rand(0,innerWidth), y: init?rand(0,innerHeight):-rand(10,200), size:rand(6,18), speed:rand(1,4), angle:rand(0,Math.PI*2), spin:rand(-0.12,0.12), color:brightColor() };
+    return { 
+      x: rand(0,innerWidth), 
+      y: init?rand(0,innerHeight):-rand(10,200), 
+      size:rand(6,18), 
+      speed:rand(1,4), 
+      angle:rand(0,Math.PI*2), 
+      spin:rand(-0.12,0.12), 
+      color:brightColor() 
+    };
   }
   for(let i=0;i<confettiCount;i++) confettis.push(createConfetti(true));
   function updateConfetti(){
@@ -51,7 +59,14 @@
   const hearts = [];
   const heartCount = 20;
   function createHeart(){
-    return { x: rand(0,innerWidth), y: innerHeight+rand(0,200), size: rand(10,28), speed: rand(0.6,1.6), angle: rand(0,Math.PI*2), spin: rand(-0.03,0.03) };
+    return { 
+      x: rand(0,innerWidth), 
+      y: innerHeight+rand(0,200), 
+      size: rand(10,28), 
+      speed: rand(0.6,1.6), 
+      angle: rand(0,Math.PI*2), 
+      spin: rand(-0.03,0.03) 
+    };
   }
   for(let i=0;i<heartCount;i++) hearts.push(createHeart());
   function drawHeartPath(ctx, size){
@@ -72,70 +87,4 @@
       heartsCtx.save();
       heartsCtx.translate(h.x,h.y);
       heartsCtx.rotate(Math.sin(h.angle)*Math.PI/8);
-      const g = heartsCtx.createLinearGradient(0,-h.size,0,h.size);
-      g.addColorStop(0,'rgba(255,140,180,0.95)');
-      g.addColorStop(1,'rgba(255,80,140,0.8)');
-      heartsCtx.fillStyle = g;
-      drawHeartPath(heartsCtx,h.size);
-      heartsCtx.fill();
-      heartsCtx.restore();
-    });
-    requestAnimationFrame(updateHearts);
-  }
-  updateHearts();
-
-  // popup button - single listener
-  const popupBtn = document.getElementById('popupBtn');
-  let modalOpen = false; // prevent multiple popups
-  popupBtn.addEventListener('click', ()=> {
-    if(modalOpen) return; // already open
-    modalOpen = true;
-
-    const wishText = document.querySelector('.wish-text').innerText.trim();
-
-    const modal = document.createElement('div');
-    modal.setAttribute('role','dialog');
-    modal.style.position='fixed';
-    modal.style.left=0; modal.style.top=0;
-    modal.style.width='100%'; modal.style.height='100%';
-    modal.style.display='grid';
-    modal.style.placeItems='center';
-    modal.style.background='rgba(2,6,23,0.6)';
-    modal.style.zIndex=9999;
-
-    const box = document.createElement('div');
-    box.style.maxWidth='720px';
-    box.style.width='90%';
-    box.style.background='linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04))';
-    box.style.border='1px solid rgba(255,255,255,0.08)';
-    box.style.padding='22px';
-    box.style.borderRadius='12px';
-    box.style.color='#fff';
-
-    const p = document.createElement('pre');
-    p.style.whiteSpace='pre-wrap';
-    p.style.fontFamily='inherit';
-    p.style.fontSize='1rem';
-    p.innerText = wishText;
-
-    const close = document.createElement('button');
-    close.innerText='Close';
-    close.style.marginTop='14px';
-    close.style.padding='10px 14px';
-    close.style.border='none';
-    close.style.borderRadius='10px';
-    close.style.background='linear-gradient(135deg,#ff66cc,#ff99bb)';
-    close.style.cursor='pointer';
-    close.onclick = ()=>{
-      document.body.removeChild(modal);
-      modalOpen = false; // reset
-    }
-
-    box.appendChild(p);
-    box.appendChild(close);
-    modal.appendChild(box);
-    document.body.appendChild(modal);
-  });
-
-})();
-
+      const g = heartsCtx.createLinearGradient(0,-h.size,0,h.size
