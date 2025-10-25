@@ -26,15 +26,7 @@
     return `rgb(${r},${g},${b})`;
   }
   function createConfetti(init=true){
-    return { 
-      x: rand(0,innerWidth), 
-      y: init?rand(0,innerHeight):-rand(10,200), 
-      size:rand(6,18), 
-      speed:rand(1,4), 
-      angle:rand(0,Math.PI*2), 
-      spin:rand(-0.12,0.12), 
-      color:brightColor() 
-    };
+    return { x: rand(0,innerWidth), y: init?rand(0,innerHeight):-rand(10,200), size:rand(6,18), speed:rand(1,4), angle:rand(0,Math.PI*2), spin:rand(-0.12,0.12), color:brightColor() };
   }
   for(let i=0;i<confettiCount;i++) confettis.push(createConfetti(true));
   function updateConfetti(){
@@ -57,34 +49,3 @@
 
   // hearts
   const hearts = [];
-  const heartCount = 20;
-  function createHeart(){
-    return { 
-      x: rand(0,innerWidth), 
-      y: innerHeight+rand(0,200), 
-      size: rand(10,28), 
-      speed: rand(0.6,1.6), 
-      angle: rand(0,Math.PI*2), 
-      spin: rand(-0.03,0.03) 
-    };
-  }
-  for(let i=0;i<heartCount;i++) hearts.push(createHeart());
-  function drawHeartPath(ctx, size){
-    ctx.beginPath();
-    const s = size;
-    ctx.moveTo(0,0);
-    ctx.bezierCurveTo(-s/2,-s/2,-s,s/3,0,s);
-    ctx.bezierCurveTo(s,-s/3,s/2,-s/2,0,0);
-    ctx.closePath();
-  }
-  function updateHearts(){
-    heartsCtx.clearRect(0,0,heartsCanvas.width,heartsCanvas.height);
-    hearts.forEach(h=>{
-      h.y -= h.speed;
-      h.angle += h.spin;
-      h.x += Math.sin(h.angle)*0.6;
-      if(h.y < -60) Object.assign(h, createHeart());
-      heartsCtx.save();
-      heartsCtx.translate(h.x,h.y);
-      heartsCtx.rotate(Math.sin(h.angle)*Math.PI/8);
-      const g = heartsCtx.createLinearGradient(0,-h.size,0,h.size
