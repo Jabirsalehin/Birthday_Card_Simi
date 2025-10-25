@@ -84,26 +84,40 @@
   }
   updateHearts();
 
-  // popup button
+  // popup button - single listener
   const popupBtn = document.getElementById('popupBtn');
-  const wishText = document.querySelector('.wish-text').innerText.trim();
+  let modalOpen = false; // prevent multiple popups
   popupBtn.addEventListener('click', ()=> {
-    // small styled modal instead of alert
+    if(modalOpen) return; // already open
+    modalOpen = true;
+
+    const wishText = document.querySelector('.wish-text').innerText.trim();
+
     const modal = document.createElement('div');
     modal.setAttribute('role','dialog');
     modal.style.position='fixed';
-    modal.style.left=0; modal.style.top=0; modal.style.width='100%'; modal.style.height='100%';
-    modal.style.display='grid'; modal.style.placeItems='center';
+    modal.style.left=0; modal.style.top=0;
+    modal.style.width='100%'; modal.style.height='100%';
+    modal.style.display='grid';
+    modal.style.placeItems='center';
     modal.style.background='rgba(2,6,23,0.6)';
     modal.style.zIndex=9999;
+
     const box = document.createElement('div');
-    box.style.maxWidth='720px'; box.style.width='90%';
+    box.style.maxWidth='720px';
+    box.style.width='90%';
     box.style.background='linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04))';
     box.style.border='1px solid rgba(255,255,255,0.08)';
-    box.style.padding='22px'; box.style.borderRadius='12px'; box.style.color='#fff';
+    box.style.padding='22px';
+    box.style.borderRadius='12px';
+    box.style.color='#fff';
+
     const p = document.createElement('pre');
-    p.style.whiteSpace='pre-wrap'; p.style.fontFamily='inherit'; p.style.fontSize='1rem';
+    p.style.whiteSpace='pre-wrap';
+    p.style.fontFamily='inherit';
+    p.style.fontSize='1rem';
     p.innerText = wishText;
+
     const close = document.createElement('button');
     close.innerText='Close';
     close.style.marginTop='14px';
@@ -112,9 +126,16 @@
     close.style.borderRadius='10px';
     close.style.background='linear-gradient(135deg,#ff66cc,#ff99bb)';
     close.style.cursor='pointer';
-    close.onclick = ()=> document.body.removeChild(modal);
-    box.appendChild(p); box.appendChild(close); modal.appendChild(box);
+    close.onclick = ()=>{
+      document.body.removeChild(modal);
+      modalOpen = false; // reset
+    }
+
+    box.appendChild(p);
+    box.appendChild(close);
+    modal.appendChild(box);
     document.body.appendChild(modal);
   });
 
 })();
+
