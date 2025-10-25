@@ -1,146 +1,20 @@
-/* Final style.css - Visual Studio ready */
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter, "Segoe UI", Poppins, sans-serif}
-:root{
-  --card-w:1000px;
-  --accent1:#ff66cc;
-  --accent2:#ffbb33;
-  --glass:rgba(255,255,255,0.06);
-}
-html,body{height:100%}
-body {
-  background: radial-gradient(circle at 20% 10%, #111827 0%, #04050a 60%);
-  color:#fff;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  /* ❌ overflow:hidden;  এই লাইনটা মুছে ফেলো বা নিচের মতো করো */
-  overflow-x:hidden;   /* শুধু horizontal scroll বন্ধ রাখো */
-  overflow-y:auto;     /* vertical scroll চালু রাখো */
-  padding:30px 12px;
-}
-
-/* canvases */
-canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
-
-/* Card */
-.card-container{
-  position:relative;
-  z-index:1;
-  width:90%;
-  max-width:var(--card-w);
-  margin:40px auto;
-  padding:36px;
-  padding-right:360px; /* reserve space for image */
-  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px) saturate(1.1);
-  box-shadow:0 10px 50px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
-  overflow:hidden;
-}
-
-/* Title */
-.title{
-  font-size:2.8rem;
-  font-weight:800;
-  line-height:1;
-  margin-bottom:6px;
-  background:linear-gradient(90deg,var(--accent2),var(--accent1));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 6px 28px rgba(255,86,160,0.08);
-}
-
-/* Wish box */
-.wish-box{
-  background:rgba(255,255,255,0.02);
-  padding:20px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.02);
-  color: #f7f7fb;
-  line-height:1.6;
-  font-size:1.05rem;
-  max-height:520px;
-  overflow:auto;
-  box-shadow:inset 0 6px 30px rgba(2,6,23,0.25);
-}
-
-/* Photo */
-.simi-photo{
-  width:280px;
-  height:280px;
-  object-fit:cover;
-  border-radius:16px;
-  border:3px solid rgba(255,255,255,0.95);
-  position:absolute;
-  top:36px;
-  right:36px;
-  box-shadow:0 14px 50px rgba(0,0,0,0.6), 0 0 36px rgba(255,100,160,0.08);
-  z-index:2;
-  transition:transform .35s ease, box-shadow .35s ease;
-}
-.simi-photo:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 70px rgba(255,100,160,0.22)}
-
-/* Button */
-.popup-btn{
-  margin-top:18px;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent1),#ff77aa);
-  color:#fff;
-  cursor:pointer;
-  font-weight:600;
-  box-shadow:0 8px 30px rgba(255,102,204,0.12);
-}
-.popup-btn:active{transform:translateY(1px)}
-
 /* Personal Pop-up + Signature */
 .popup-container {
   display: inline-flex;
   align-items: center;
-  gap: 12px; /* বাটন আর signature এর মধ্যে ফাঁকা */
+  gap: 16px; /* বাটন আর signature এর মধ্যে ফাঁকা */
   margin-top: 12px;
 }
 
 .signature {
-  font-family: "Pacifico", cursive; /* handwritten/French style */
-  font-size: 1.4rem;
-  color: #ff77aa;
+  font-family: 'Playfair Display', serif; /* corporate/modern look */
+  font-style: italic;
   font-weight: 500;
+  font-size: 1.2rem;
+  color: #ff77aa;
+  letter-spacing: 0.5px;
   user-select: none;
 }
 
 /* Google Fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-/* footer */
-.footer{color:#9ca3af;margin-top:22px;font-size:.92rem}
-
-/* responsive */
-@media (max-width:880px){
-  .card-container{
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-
-  /* 📸 Image top e anar jonno */
-  .simi-photo{
-    position:relative;
-    order:-1; /* image upore chole asbe */
-    right:auto;
-    top:auto;
-    margin:0 auto 18px auto;
-    display:block;
-    width:220px;
-    height:220px;
-  }
-
-  .title{font-size:2.1rem;margin-bottom:10px;}
-  .wish-box{font-size:0.98rem;}
-}
-
-/* utility */
-.hidden{display:none}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
