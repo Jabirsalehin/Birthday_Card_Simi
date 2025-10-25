@@ -1,12 +1,22 @@
 /* Final style.css - Visual Studio ready */
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter, "Segoe UI", Poppins, sans-serif}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter, "Segoe UI", Poppins, sans-serif;
+}
+
 :root{
   --card-w:1000px;
   --accent1:#ff66cc;
   --accent2:#ffbb33;
   --glass:rgba(255,255,255,0.06);
 }
-html,body{height:100%}
+
+html,body{
+  height:100%;
+}
+
 body {
   background: radial-gradient(circle at 20% 10%, #111827 0%, #04050a 60%);
   color:#fff;
@@ -19,7 +29,15 @@ body {
 }
 
 /* canvases */
-canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
+canvas{
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+}
 
 /* Card */
 .card-container{
@@ -78,4 +96,69 @@ canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-even
   z-index:2;
   transition:transform .35s ease, box-shadow .35s ease;
 }
-.simi-photo:hover{transform:translateY(-6px) scale(1.02)
+
+.simi-photo:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 20px 70px rgba(255,100,160,0.22);
+}
+
+/* Button */
+.popup-btn{
+  margin-top:18px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--accent1),#ff77aa);
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 8px 30px rgba(255,102,204,0.12);
+}
+
+.popup-btn:active{
+  transform:translateY(1px);
+}
+
+/* footer */
+.footer{
+  color:#9ca3af;
+  margin-top:22px;
+  font-size:.92rem;
+}
+
+/* responsive */
+@media (max-width:880px){
+  .card-container{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  /* 📸 Image top e anar jonno */
+  .simi-photo{
+    position:relative;
+    order:-1; /* image upore chole asbe */
+    right:auto;
+    top:auto;
+    margin:0 auto 18px auto;
+    display:block;
+    width:220px;
+    height:220px;
+  }
+
+  .title{
+    font-size:2.1rem;
+    margin-bottom:10px;
+  }
+
+  .wish-box{
+    font-size:0.98rem;
+  }
+}
+
+/* utility */
+.hidden{
+  display:none;
+}
