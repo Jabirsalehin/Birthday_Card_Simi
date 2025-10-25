@@ -94,6 +94,25 @@ canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-even
 }
 .popup-btn:active{transform:translateY(1px)}
 
+/* Personal Pop-up + Signature */
+.popup-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px; /* বাটন আর signature এর মধ্যে ফাঁকা */
+  margin-top: 12px;
+}
+
+.signature {
+  font-family: "Pacifico", cursive; /* handwritten/French style */
+  font-size: 1.4rem;
+  color: #ff77aa;
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 /* footer */
 .footer{color:#9ca3af;margin-top:22px;font-size:.92rem}
 
@@ -123,6 +142,5 @@ canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-even
   .wish-box{font-size:0.98rem;}
 }
 
-
 /* utility */
-
+.hidden{display:none}
